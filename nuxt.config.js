@@ -1,6 +1,6 @@
 export default {
     head: {
-        title: 'etherflow',
+        title: 'EtherFlow Playground',
         meta: [
             { charset: 'utf-8' },
             {
@@ -12,20 +12,31 @@ export default {
         ],
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
-    css: ['element-ui/lib/theme-chalk/index.css'],
-    plugins: ['@/plugins/element-ui'],
     components: true,
-    buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
+    build: {
+        postcss: {
+            plugins: {
+                tailwindcss: {},
+                autoprefixer: {},
+            },
+        },
+    },
+    loading: {
+        color: '#37de8a',
+    },
+    serverMiddleware: [{ path: '/api', handler: '~/serverMiddleware/api.js' }],
+    css: ['@/assets/main.css'],
+    buildModules: ['@nuxt/postcss8', '@nuxtjs/eslint-module'],
     modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
     axios: {
         baseURL: '/',
+    },
+    router: {
+        trailingSlash: true,
     },
     pwa: {
         manifest: {
             lang: 'en',
         },
-    },
-    build: {
-        transpile: [/^element-ui/],
     },
 }

@@ -1,9 +1,9 @@
 <template>
-    <Tutorial />
+    <Playgraund />
 </template>
 
 <script>
 export default {
-    name: 'IndexPage',
+    name: 'TxsPage',
 }
 </script>

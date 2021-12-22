@@ -10,7 +10,7 @@
         },
         {
             "path": ".",
-            "name": "Etherflow-gui"
+            "name": "Etherflow Playground"
         }
     ],
     "settings": {
