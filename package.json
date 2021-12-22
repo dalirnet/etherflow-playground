@@ -16,6 +16,9 @@
         "lintfix": "prettier --write --list-different . && yarn lint:js --fix && yarn lint:style --fix",
         "test": "jest"
     },
+    "engines": {
+        "node": "10.x|12.x"
+    },
     "dependencies": {
         "@nuxtjs/axios": "^5.13.6",
         "@nuxtjs/pwa": "^3.3.5",
