@@ -84,9 +84,15 @@
 <script>
 export default {
     name: 'PlaygraundCom',
+    props: {
+        firstState: {
+            type: String,
+            required: true,
+        },
+    },
     data() {
         return {
-            state: 'loading',
+            state: null,
             blockNumber: 0,
             methods: {
                 crawler: false,
@@ -140,6 +146,9 @@ export default {
         computedTxsHash() {
             return this.$route.params.hash
         },
+    },
+    created() {
+        this.state = this.firstState
     },
     mounted() {
         this.$refs.txsHash.value = this.computedTxsHash || ''
