@@ -5148,10 +5148,10 @@ ethereumjs-util@^7.0.10, ethereumjs-util@^7.1.0, ethereumjs-util@^7.1.3:
     ethereum-cryptography "^0.1.3"
     rlp "^2.2.4"
 
-etherflow@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/etherflow/-/etherflow-1.0.1.tgz#9af5d8dc16ee98583345d701778db027f7e261f1"
-  integrity sha512-HWIlyh2Syb1wSeat2TuPXWLDiYL9MlNsL6VbgUvNGUSHn9q1+GxyWP9pODaKTTxavpbReY/1W9cw8JqRv7cYDQ==
+etherflow@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/etherflow/-/etherflow-1.0.3.tgz#1c81322ac3cef9890d60cc08b7cb4ff129112dd2"
+  integrity sha512-qwwTXco0TetT+x/7ytxNyLpC/bdkfMGlumlnfxYtNua3PphVqk0rFlnkyenXT7EQcIuK2fUMN2XtcmD27aGaIg==
   dependencies:
     axios "^0.24.0"
     inquirer "^8.2.0"

@@ -15,7 +15,7 @@
             <span
                 class="w-full border-gray-200 border-t border-dashed mx-4"
             ></span>
-            <template v-if="txs.status">
+            <template v-if="txn.status">
                 <code
                     class="bg-green-100 text-green-600 border-green-200 text-sm p-1 rounded border"
                     >Success</code
@@ -28,7 +28,7 @@
                 >
             </template>
         </div>
-        <template v-if="txs.status">
+        <template v-if="txn.status">
             <div class="flex justify-between items-center pt-3">
                 <span class="pb-2">Value</span>
                 <span
@@ -36,7 +36,7 @@
                 ></span>
                 <code
                     class="whitespace-nowrap bg-gray-100 text-sm p-1 rounded border"
-                    >{{ txs.value }} Eth</code
+                    >{{ txn.value }} Eth</code
                 >
             </div>
             <div class="flex justify-between items-center pt-3">
@@ -44,9 +44,9 @@
                 <span
                     class="w-full border-gray-200 border-t border-dashed mx-4"
                 ></span>
-                <a :href="`https://etherscan.io/address/${txs.from}`">
+                <a :href="`https://etherscan.io/address/${txn.from}`">
                     <code class="bg-gray-100 text-sm p-1 rounded border">{{
-                        txs.from || '!!'
+                        txn.from || '!!'
                     }}</code>
                 </a>
             </div>
@@ -55,9 +55,9 @@
                 <span
                     class="w-full border-gray-200 border-t border-dashed mx-4"
                 ></span>
-                <a :href="`https://etherscan.io/address/${txs.to}`">
+                <a :href="`https://etherscan.io/address/${txn.to}`">
                     <code class="bg-gray-100 text-sm p-1 px-2 rounded border">{{
-                        txs.to || '!!'
+                        txn.to || '!!'
                     }}</code>
                 </a>
             </div>
@@ -67,7 +67,7 @@
 
 <script>
 export default {
-    name: 'TxsResult',
+    name: 'TxnResult',
     props: {
         methods: {
             type: Object,
@@ -79,7 +79,7 @@ export default {
                 }
             },
         },
-        txs: {
+        txn: {
             type: Object,
             default() {
                 return {

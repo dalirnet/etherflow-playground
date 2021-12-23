@@ -6,11 +6,11 @@
             <EtherflowLogo />
             <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
                 <h2 class="text-2xl leading-7 font-semibold">
-                    <span>Get ETH txs status</span>
+                    <span>Get ETH txn status</span>
                 </h2>
                 <p class="mt-3 text-gray-600">
                     <span>Enter</span>
-                    <span class="button--doc text-green-500">txs hash</span>
+                    <span class="button--doc text-green-500">txn hash</span>
                     <span>to check by</span>
                     <a
                         href="https://github.com/dalirnet/etherflow/blob/master/src/methods/Crawler.js"
@@ -43,7 +43,7 @@
                 </p>
                 <div class="pt-4 space-x-2">
                     <input
-                        ref="txsHash"
+                        ref="txnHash"
                         class="p-2 rounded-md border-2 border-green-300 w-full"
                         placeholder="Type and Enter / For example 0x00000000000000"
                         @keyup.enter="check"
@@ -74,7 +74,7 @@
                     </div>
                 </template>
                 <template v-else-if="computedLoadedState">
-                    <TxsResult :txs="txs" :methods="methods" />
+                    <TxnResult :txn="txn" :methods="methods" />
                 </template>
             </div>
         </div>
@@ -83,7 +83,7 @@
 
 <script>
 export default {
-    name: 'PlaygraundCom',
+    name: 'PlaygroundCom',
     props: {
         firstState: {
             type: String,
@@ -99,7 +99,7 @@ export default {
                 http: false,
                 sdk: false,
             },
-            txs: {
+            txn: {
                 methods: {},
                 status: false,
                 value: 0,
@@ -109,12 +109,12 @@ export default {
         }
     },
     fetch() {
-        if (this.$route.name === 'txs-hash' && this.computedTxsHash) {
+        if (this.$route.name === 'txn-hash' && this.computedTxnHash) {
             this.state = 'loading'
             Promise.allSettled(
                 Object.keys(this.methods).map((method) => {
                     return this.$axios.$get(
-                        `/api/${method}/getTxsStatus/${this.computedTxsHash}`
+                        `/api/${method}/getTxnStatus/${this.computedTxnHash}`
                     )
                 })
             )
@@ -122,7 +122,7 @@ export default {
                     this.$nextTick(() => {
                         values.forEach(({ value = {} }) => {
                             if (value?.status) {
-                                this.txs = value
+                                this.txn = value
                                 this.methods[value.method] = true
                             }
                         })
@@ -143,7 +143,7 @@ export default {
         computedLoadingState() {
             return this.state === 'loading'
         },
-        computedTxsHash() {
+        computedTxnHash() {
             return this.$route.params.hash
         },
     },
@@ -151,7 +151,7 @@ export default {
         this.state = this.firstState
     },
     mounted() {
-        this.$refs.txsHash.value = this.computedTxsHash || ''
+        this.$refs.txnHash.value = this.computedTxnHash || ''
         this.$axios
             .$get('/api/sdk/getBlockNumber')
             .then((blockNumber) => {
@@ -163,7 +163,7 @@ export default {
         check(e) {
             if (e.target.value) {
                 this.$router.push({
-                    name: 'txs-hash',
+                    name: 'txn-hash',
                     params: { hash: e.target.value },
                 })
             }

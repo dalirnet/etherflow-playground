@@ -1,5 +1,5 @@
 <template>
-    <Playgraund first-state="loading" />
+    <Playground first-state="loading" />
 </template>
 
 <script>

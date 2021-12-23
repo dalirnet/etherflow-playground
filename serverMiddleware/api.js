@@ -9,9 +9,9 @@ app.get('/:method(crawler|http|sdk)/getBlockNumber', (req, res) => {
     })
 })
 
-app.get('/:method(crawler|http|sdk)/getTxsStatus/:txsHash', (req, res) => {
+app.get('/:method(crawler|http|sdk)/getTxnStatus/:txnHash', (req, res) => {
     etherflow[req.params.method]
-        .getTxsStatus(req.params.txsHash)
+        .getTxnStatus(req.params.txnHash)
         .then((result) => {
             res.json({
                 method: req.params.method,
