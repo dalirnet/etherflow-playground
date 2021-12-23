@@ -47,6 +47,7 @@
                         class="p-2 rounded-md border-2 border-green-300 w-full"
                         placeholder="Type and Enter / For example 0x00000000000000"
                         @keyup.enter="check"
+                        @change="check"
                     />
                 </div>
                 <template v-if="computedLoadingState">
